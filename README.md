@@ -1,4 +1,7 @@
 # CS143-Database-Systems
+
+![demo](https://github.com/YufeiHu/CS143-Database-Systems/demo.png) 
+
 This repo contains all the codes and docs of project 1 for the course CS143 Database Systems (2018 Spring) taken at UCLA. This project built an IMDB-like website that allows users to search for movie comments, leave comments, add new movies and etc.
 
 ### Some more details:
