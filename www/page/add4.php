@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Yufei Movie Arena">
@@ -70,15 +70,13 @@
     </style>
   </head>
 
-
-	<body>
+  <body>
 
     <img src="../image/cover2.jpg" alt="" id="background" />
 
      <div id="maincontent" class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="container">
-
 
           <ul class="masthead clearfix nav nav-tabs nav-fill cover-container", id="TopBlock">
             <li class="nav-item">
@@ -105,7 +103,6 @@
               <a class="nav-link" href="search0.php">Search</a>
             </li>
           </ul>
-
 
           <section class="jumbotron text-center">
             <div class="container">
@@ -148,12 +145,10 @@
                   <!-- <input type="text" class="form-control" id="movieTitle" name="movieTitle" list="movieTitleList"> -->
                 </div>
 
-
                 <div class="form-group">
                   <label for="yourName">Your Name</label>
                   <input type="text" class="form-control" id="yourName" name="yourName">
                 </div>
-
 
                 <div class="form-group">
                   <label for="rating">Rating</label>
@@ -166,16 +161,13 @@
                   </select>
                 </div>
 
-
                 <div class="form-group">
                   <label for="comment">Comment</label>
                   <input type="text" style="height:200px;" class="form-control" id="comment" name="comment">
                 </div>
 
-
                 <input class="btn btn-primary Button" type="submit" value="Submit" name="submit">
               </form>
-
 
               <div class="Result">
 
@@ -186,13 +178,11 @@
                       die('Unable to connect to database [' . $db->connect_error . ']');
                     }
 
-
                     // read all inputs
                     $movieTitle_str = $_POST["movieTitle"];
                     $yourName = $_POST["yourName"];
                     $rating = $_POST["rating"];
                     $comment = $_POST["comment"];
-
 
                     // protect database from sensitive words
                     $movieTitle_str = str_replace("'", "\'", $movieTitle_str);
@@ -201,7 +191,6 @@
                     $yourName = str_replace("\"", "\"", $yourName);
                     $comment = str_replace("'", "\'", $comment);
                     $comment = str_replace("\"", "\"", $comment);
-
 
                     // validation check
                     if(strlen($movieTitle_str) == 0 OR $movieTitle_str[strlen($movieTitle_str) - 1] != ')'){
@@ -236,7 +225,6 @@
                       exit(1);
                     }
 
-
                     // derive mid
                     $query = "SELECT id FROM Movie WHERE title='".$movieTitle."' AND year=".$movieYear.";";
                     if (!($rs1 = $db->query($query))) {
@@ -259,9 +247,8 @@
                       $db->close();
                       exit(1);
                     }
-
-
                     $currentTime = date('Y-m-d G:i:s');
+
                     // start query
                     $query = "INSERT INTO Review VALUES ('".$yourName."', '".$currentTime."', ".$mid.", ".$rating.", '".$comment."');";
                     if (!($rs2 = $db->query($query))) {
@@ -280,22 +267,18 @@
                 ?>
               </div>
 
-
             </div>
           </section>
-
 
         </div>
       </div>
     </div>
 
-		
     <script type="text/javascript">
       $(window).load(function(){
         $("#background").fullBg();
       });
     </script>
-
 
     <!-- Bootstrap core JavaScript -->
     <!-- ================================================== -->
@@ -315,5 +298,5 @@
       });
     </script>
 
-	</body>
+  </body>
 </html>

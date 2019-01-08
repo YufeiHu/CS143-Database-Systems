@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Yufei Movie Arena">
@@ -64,15 +64,13 @@
     </style>
   </head>
 
-
-	<body>
+  <body>
 
     <img src="../image/cover2.jpg" alt="" id="background" />
 
      <div id="maincontent" class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="container">
-
 
           <ul class="masthead clearfix nav nav-tabs nav-fill cover-container", id="TopBlock">
             <li class="nav-item">
@@ -99,7 +97,6 @@
               <a class="nav-link" href="search0.php">Search</a>
             </li>
           </ul>
-
 
           <section class="jumbotron text-center">
             <div class="container">
@@ -147,7 +144,6 @@
 
               </form>
 
-
               <div class="Result">
                 <?php
                   if(isset($_GET["submit"]) AND $_GET["actorOrDirector"] AND $_GET["maleOrFemale"] AND $_GET["firstName"] AND $_GET["lastName"] AND $_GET["DoB"]){
@@ -156,7 +152,6 @@
                       die('Unable to connect to database [' . $db->connect_error . ']');
                     }
 
-
                     // read all inputs
                     $actorOrDirector = $_GET["actorOrDirector"];
                     $maleOrFemale = $_GET["maleOrFemale"];
@@ -164,7 +159,6 @@
                     $lastName = $_GET["lastName"];
                     $DoB = $_GET["DoB"];
                     $DoD = $_GET["DoD"];
-
 
                     // validation check
                     if(!preg_match('/^[A-Za-z\'\-\.]+$/', $firstName)){
@@ -191,11 +185,9 @@
                       exit(1);
                     }
 
-
                     // protect database from sensitive words
                     $firstName = str_replace("'", "\'", $firstName);
                     $lastName = str_replace("'", "\'", $lastName);
-
 
                     // derive the max ID
                     $query = "SELECT * FROM MaxPersonID;";
@@ -212,7 +204,6 @@
                         $maxID = $val;
                       }
                     }
-
 
                     // start the query
                     if($actorOrDirector == "Actor" AND !$DoD){
@@ -242,7 +233,6 @@
                       echo "Successfully Added to Director: ".$maxID.", ".$lastName.", ".$firstName.", ".$DoB.", ".$DoD;
                     }
 
-
                     // update the max ID
                     $maxID++;
                     $query = "UPDATE MaxPersonID SET id=".$maxID.";";
@@ -260,27 +250,18 @@
                 ?>
               </div>
 
-
             </div>
           </section>
-
 
         </div>
       </div>
     </div>
-
-		
-
-
-		
-
 
     <script type="text/javascript">
       $(window).load(function(){
         $("#background").fullBg();
       });
     </script>
-
 
     <!-- Bootstrap core JavaScript -->
     <!-- ================================================== -->
@@ -293,6 +274,5 @@
     <script type="text/javascript" src="../js/jquery.fullbg.min.js"></script>
     <script src="../js/ie10-viewport-bug-workaround.js"></script>
 
-
-	</body>
+  </body>
 </html>

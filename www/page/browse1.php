@@ -81,7 +81,6 @@
     </style>
   </head>
 
-
 	<body>
 
     <img src="../image/cover3.jpeg" alt="" id="background" />
@@ -89,7 +88,6 @@
      <div id="maincontent" class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="container">
-
 
           <ul class="masthead clearfix nav nav-tabs nav-fill cover-container", id="TopBlock">
             <li class="nav-item">
@@ -116,7 +114,6 @@
               <a class="nav-link" href="search0.php">Search</a>
             </li>
           </ul>
-
 
           <section class="jumbotron text-center">
             <div class="container">
@@ -150,10 +147,8 @@
                   <input type="text" class="form-control" id="movieTitle" name="movieTitle" list="movieTitleList" placeholder="Movie Name">
                 </div>
 
-
                 <input class="btn btn-primary Button" type="submit" value="Browse" name="submit">
               </form>
-
 
               <div class="Result">
                 <?php
@@ -163,15 +158,12 @@
                       die('Unable to connect to database [' . $db->connect_error . ']');
                     }
 
-
                     // read all inputs
                     $movieTitle_str = $_POST["movieTitle"];
-
 
                     // protect database from sensitive words
                     $movieTitle_str = str_replace("'", "\'", $movieTitle_str);
                     $movieTitle_str = str_replace("\"", "\"", $movieTitle_str);
-
 
                     // validation check
                     if(strlen($movieTitle_str) == 0 OR $movieTitle_str[strlen($movieTitle_str) - 1] != ')'){
@@ -206,7 +198,6 @@
                       exit(1);
                     }
 
-
                     // derive mid
                     $query = "SELECT id FROM Movie WHERE title='".$movieTitle."' AND year=".$movieYear.";";
                     if (!($rs1 = $db->query($query))) {
@@ -229,7 +220,6 @@
                       $db->close();
                       exit(1);
                     }
-
 
                     // fetch basic information
                     $query = "SELECT title, year, rating, company FROM Movie WHERE id=".$mid.";";
@@ -311,7 +301,6 @@
                     $basicTable .= "</tbody></table>";
                     echo $basicTable."<br/><br/>";
 
-
                     // fetch Actor information
                     $query = "SELECT aid, role FROM MovieActor WHERE mid=".$mid.";";
                     if (!($rs = $db->query($query))) {
@@ -352,7 +341,6 @@
                     } else{
                       echo "No actor is found.<br/><br/><br/><br/>";
                     }
-
 
                     // fetch review
                     $query = "SELECT name, time, rating, comment FROM Review WHERE mid=".$mid.";";
@@ -401,17 +389,12 @@
                     $db->close();
                   } else{
 
-
-
-
-
                     if(isset($_GET['id'])){
                       $db = new mysqli('localhost', 'cs143', '', 'CS143');
                       if($db->connect_errno > 0){
                         die('Unable to connect to database [' . $db->connect_error . ']');
                       }
                       $mid = $_GET['id'];
-                      
 
                       // fetch basic information
                       $query = "SELECT title, year, rating, company FROM Movie WHERE id=".$mid.";";
@@ -481,7 +464,6 @@
                         }
                       }
 
-
                       echo "<h1>".$title."</h1><br/><br/>";
                       echo "<h2>Basic Information</h2>";
                       // echo "<span style=\"font-size:1.2em\">Basic Information</span><br/>";
@@ -494,7 +476,6 @@
                       $basicTable .= "<tr><th scope=\"row\">Director</th><td>".$director."</td></tr>";
                       $basicTable .= "</tbody></table>";
                       echo $basicTable."<br/><br/>";
-
 
                       // fetch Actor information
                       $query = "SELECT aid, role FROM MovieActor WHERE mid=".$mid.";";
@@ -537,7 +518,6 @@
                         echo "No actor is found.<br/><br/><br/><br/>";
                       }
 
-
                       // fetch review
                       $query = "SELECT name, time, rating, comment FROM Review WHERE mid=".$mid.";";
                       if (!($rs = $db->query($query))) {
@@ -571,7 +551,6 @@
                         echo "Average score: ".$reviewRating."/5<br/>";
                         echo "Number of comments: ".$reviewNum."<br/><br/>";
 
-
                         for($ii=0; $ii<sizeof($reviewName); $ii++){
                           echo $reviewName[$ii]." rates: ".$reviewScore[$ii]."/5 @".$reviewTime[$ii]."<br/>";
                           echo "Comment says: <br/>".$reviewComment[$ii];
@@ -583,7 +562,6 @@
                         echo "</div>";
                       }
 
-
                       unset($_GET['id']);
                       $db->close();
                     }
@@ -593,18 +571,15 @@
             </div>
           </section>
 
-
         </div>
       </div>
     </div>
 
-		
     <script type="text/javascript">
       $(window).load(function(){
         $("#background").fullBg();
       });
     </script>
-
 
     <!-- Bootstrap core JavaScript -->
     <!-- ================================================== -->

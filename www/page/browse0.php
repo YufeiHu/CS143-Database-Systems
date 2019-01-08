@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Yufei Movie Arena">
@@ -81,14 +81,13 @@
   </head>
 
 
-	<body>
+  <body>
 
     <img src="../image/cover3.jpeg" alt="" id="background" />
 
      <div id="maincontent" class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="container">
-
 
           <ul class="masthead clearfix nav nav-tabs nav-fill cover-container", id="TopBlock">
             <li class="nav-item">
@@ -150,10 +149,8 @@
                   <input type="text" class="form-control" id="actor" name="actor" list="actorList" placeholder="Actor Name">
                 </div>
 
-
                 <input class="btn btn-primary Button" type="submit" value="Browse" name="submit">
               </form>
-
 
               <div class="Result">
                 <?php
@@ -163,15 +160,12 @@
                       die('Unable to connect to database [' . $db->connect_error . ']');
                     }
 
-
                     // read all inputs
                     $actor_str = $_POST["actor"];
-
 
                     // protect database from sensitive words
                     $actor_str = str_replace("'", "\'", $actor_str);
                     $actor_str = str_replace("\"", "\"", $actor_str);
-
 
                     // validation check
                     if(strlen($actor_str) == 0 OR $actor_str[strlen($actor_str) - 1] != ')'){
@@ -212,7 +206,6 @@
                       exit(1);
                     }
 
-
                     // derive aid
                     $query = "SELECT id FROM Actor WHERE last='".$actorLast."' AND first='".$actorFirst."' AND dob='".$actorDoB."';";
                     if (!($rs2 = $db->query($query))) {
@@ -235,7 +228,6 @@
                       $db->close();
                       exit(1);
                     }
-
 
                     // fetch basic information
                     $query = "SELECT * FROM Actor WHERE id=".$aid.";";
@@ -266,7 +258,6 @@
                       echo "(".$gender.", ".$dob." to now)<br/><br/>";
                     }
 
-
                     // fetch movie information
                     $query = "SELECT * FROM MovieActor WHERE aid=".$aid.";";
                     if (!($rs = $db->query($query))) {
@@ -275,7 +266,6 @@
                       $db->close();
                       exit(1);
                     }
-
 
                     $result_flag = 0;
                     $result = "<table class=\"table\"><thead><tr><th scope=\"col\">Role</th><th scope=\"col\">Movie Title</th></tr></thead>";
@@ -320,15 +310,11 @@
                     $db->close();
                   } else{
 
-
-
-
                     if(isset($_GET['id'])){
                       $db = new mysqli('localhost', 'cs143', '', 'CS143');
                       if($db->connect_errno > 0){
                         die('Unable to connect to database [' . $db->connect_error . ']');
                       }
-
                       $aid = $_GET['id'];
                       
                       // fetch basic information
@@ -339,7 +325,6 @@
                         $db->close();
                         exit(1);
                       }
-
 
                       while($row = $rs->fetch_assoc()) {
                         $actorFirst = $row['first'];
@@ -355,7 +340,6 @@
                         echo "(".$gender.", ".$dob." to now)<br/><br/>";
                       }
 
-
                       // fetch movie information
                       $query = "SELECT * FROM MovieActor WHERE aid=".$aid.";";
                       if (!($rs = $db->query($query))) {
@@ -364,7 +348,6 @@
                         $db->close();
                         exit(1);
                       }
-
 
                       $result_flag = 0;
                       $result = "<table class=\"table\"><thead><tr><th scope=\"col\">Role</th><th scope=\"col\">Movie Title</th></tr></thead>";
@@ -408,22 +391,18 @@
                 ?>
               </div>
 
-
             </div>
           </section>
-
 
         </div>
       </div>
     </div>
 
-		
     <script type="text/javascript">
       $(window).load(function(){
         $("#background").fullBg();
       });
     </script>
-
 
     <!-- Bootstrap core JavaScript -->
     <!-- ================================================== -->
@@ -443,5 +422,5 @@
       });
     </script>
 
-	</body>
+  </body>
 </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Yufei Movie Arena">
@@ -70,15 +70,13 @@
     </style>
   </head>
 
-
-	<body>
+  <body>
 
     <img src="../image/cover2.jpg" alt="" id="background" />
 
      <div id="maincontent" class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="container">
-
 
           <ul class="masthead clearfix nav nav-tabs nav-fill cover-container", id="TopBlock">
             <li class="nav-item">
@@ -105,7 +103,6 @@
               <a class="nav-link" href="search0.php">Search</a>
             </li>
           </ul>
-
 
           <section class="jumbotron text-center">
             <div class="container">
@@ -167,7 +164,6 @@
                 <input class="btn btn-primary Button" type="submit" value="Submit" name="submit">
               </form>
 
-
               <div class="Result">
                 <?php
                   if(isset($_POST["submit"]) AND isset($_POST["genre"]) AND $_POST["rating"] AND $_POST["title"] AND $_POST["company"] AND $_POST["year"]){
@@ -175,7 +171,6 @@
                     if($db->connect_errno > 0){
                       die('Unable to connect to database [' . $db->connect_error . ']');
                     }
-
 
                     // read all inputs
                     $genres = $_POST["genre"];
@@ -185,19 +180,16 @@
                     $company = $_POST["company"];
                     $year = $_POST["year"];
 
-
                     // protect database from sensitive words
                     $title = str_replace("'", "\'", $title);
                     $title = str_replace("\"", "\"", $title);
                     $company = str_replace("'", "\'", $company);
                     $company = str_replace("\"", "\"", $company);
 
-                    
                     // validation check
                     if(!preg_match('/^[0-9]{4}$/', $year)){
                       echo "Invalid Year. Please try again.";
                     } else {
-
 
                       // derive the max ID
                       $query = "SELECT * FROM MaxMovieID;";
@@ -214,7 +206,6 @@
                           $maxID = $val;
                         }
                       }
-
 
                       // start the query
                       $query = "INSERT INTO Movie VALUES (".$maxID.", '".$title."', ".$year.", '".$rating."', '".$company."');";
@@ -237,7 +228,6 @@
 
                       echo "Successfully Added to Movie and Movie Genre: ".$maxID.", ".$genre_str.", ".$rating.", ".$title.", ".$company.", ".$year;
 
-
                       // update the max ID
                       $maxID++;
                       $query = "UPDATE MaxMovieID SET id=".$maxID.";";
@@ -255,27 +245,18 @@
                 ?>
               </div>
 
-
             </div>
           </section>
-
 
         </div>
       </div>
     </div>
-
-		
-
-
-		
-
 
     <script type="text/javascript">
       $(window).load(function(){
         $("#background").fullBg();
       });
     </script>
-
 
     <!-- Bootstrap core JavaScript -->
     <!-- ================================================== -->
@@ -295,12 +276,5 @@
       });
     </script>
 
-    <!-- <script type="text/javascript">
-      $(document).ready(function() {
-        $('#actorOrDirector').multiselect();
-      });
-    </script> -->
-
-
-	</body>
+  </body>
 </html>

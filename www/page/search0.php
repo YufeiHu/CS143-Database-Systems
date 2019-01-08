@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Yufei Movie Arena">
@@ -81,15 +81,13 @@
     </style>
   </head>
 
-
-	<body>
+  <body>
 
     <img src="../image/cover4.png" alt="" id="background" />
 
      <div id="maincontent" class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="container">
-
 
           <ul class="masthead clearfix nav nav-tabs nav-fill cover-container", id="TopBlock">
             <li class="nav-item">
@@ -117,7 +115,6 @@
             </li>
           </ul>
 
-
           <section class="jumbotron text-center">
             <div class="container">
               <h1 class="Title">Search Info</h1>
@@ -130,7 +127,6 @@
                 <input class="btn btn-primary Button" type="submit" value="Search" name="submit">
               </form>
 
-
               <div class="Result">
                 <?php
                   if(isset($_POST["submit"]) AND isset($_POST["searchInfo"])){
@@ -138,7 +134,6 @@
                     if($db->connect_errno > 0){
                       die('Unable to connect to database [' . $db->connect_error . ']');
                     }
-
 
                     // read all inputs
                     $searchInfo = $_POST["searchInfo"];
@@ -148,16 +143,13 @@
                       exit(1);
                     }
 
-
                     // protect database from sensitive words
                     $searchInfo = str_replace("'", "\'", $searchInfo);
                     $searchInfo = str_replace("\"", "\"", $searchInfo);
 
-
                     // split the info into an array
                     $searchInfos = preg_split('/ +/', $searchInfo);
                     
-
                     // search for movies
                     $flag_first = true;
                     $query = "SELECT id, title, year FROM Movie WHERE";
@@ -197,14 +189,12 @@
                       echo $result;
                     }
 
-
                     // search for actors
                     if(sizeof($searchInfos) > 2){
                       echo "No actors are found.";
                       $db->close();
                       exit(1);
                     }
-
 
                     $query = "SELECT id, last, first, dob FROM Actor WHERE";
                     if(sizeof($searchInfos) == 1){
@@ -250,18 +240,15 @@
             </div>
           </section>
 
-
         </div>
       </div>
     </div>
-
-		
+    
     <script type="text/javascript">
       $(window).load(function(){
         $("#background").fullBg();
       });
     </script>
-
 
     <!-- Bootstrap core JavaScript -->
     <!-- ================================================== -->
@@ -281,5 +268,5 @@
       });
     </script>
 
-	</body>
+  </body>
 </html>
