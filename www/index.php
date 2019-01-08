@@ -65,7 +65,6 @@
     </style>
   </head>
 
-
   <body>
 
     <img src="image/cover1.jpg" alt="" id="background" />
@@ -73,7 +72,6 @@
     <div id="maincontent" class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="cover-container">
-
 
           <ul class="masthead clearfix nav nav-tabs nav-fill", id="TopBlock">
             <li class="nav-item">
@@ -101,7 +99,6 @@
             </li>
           </ul>
 
-
           <div class="inner cover" id="mainGround">
             <h1 class="cover-heading">Yufei Movie Arena</h1>
             <p class="lead" id="introBlock"><span id="introduction">Welcome to the Yufei Movie Arena. You will be playing with the exciting movie databse system!</span></p>
@@ -111,13 +108,11 @@
       </div>
     </div>
 
-
     <script type="text/javascript">
       $(window).load(function(){
         $("#background").fullBg();
       });
     </script>
-
 
     <!-- Bootstrap core JavaScript -->
     <!-- ================================================== -->
